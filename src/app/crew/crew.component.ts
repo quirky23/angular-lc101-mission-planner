@@ -20,7 +20,10 @@ export class CrewComponent implements OnInit {
   }
 
   add(memberName: string, isFirst: boolean) {
-    this.crew.push({name: memberName, firstMission: isFirst});
+    const crewMember = this.crew.find((cm: any) => cm.name === memberName)
+  	if(!crewMember) {
+  		this.crew.push({name: memberName, firstMission: isFirst});
+     }
   }
 
   remove(member: object) {
@@ -36,4 +39,6 @@ export class CrewComponent implements OnInit {
     member['name']= name;
     this.memberBeingEdited = null;
   }
+
 }
+
